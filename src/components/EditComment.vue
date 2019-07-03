@@ -11,7 +11,6 @@
                                id="editTitle"
                         >
                     </div>
-
                     <div class="modal-body">
                         <p><textarea
                                 name="description"
@@ -19,7 +18,6 @@
                                 id="editBody"
                         ></textarea></p>
                     </div>
-
                     <div class="modal-footer">
                         <slot name="footer">
                             <button id="modalButtonSave" @click="onSave">
@@ -39,23 +37,14 @@
 <script>
     export default {
         props: ['comment'],
-        data () {
+        data() {
             return {
                 editedTitle: this.comment.title,
                 editedDescription: this.comment.body
-                }
-            },
-        computed: {
-            editedTitle1() {
-                return this.comment.title
-            },
-            editedDescription1() {
-                return this.comment.body
-            },
+            }
         },
         methods: {
             onSave() {
-
                 if (this.editedDescription !== '' && this.editedTitle !== '') {
 
                     this.$store.dispatch('updateComment', {
@@ -64,14 +53,8 @@
                         id: this.comment.id
                     });
                     this.$emit('close');
-
                 }
-
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

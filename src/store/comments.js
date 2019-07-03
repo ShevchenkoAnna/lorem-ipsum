@@ -24,9 +24,6 @@ export default {
             state.comment.title = title;
             state.comment.body = description;
         },
-        sendComment(state, payload){
-            state.comments.push(payload)
-        },
         deleteComment(state, payload) {
             const comment = state.comments.find(c => {
                 return c.id === payload
@@ -114,12 +111,7 @@ export default {
                     body: payload.body,
                     created_at: payload.created_at
                 }, config)
-                    .then(response => {
-                        // commit('sendComment', {
-                        //     ...payload,
-                        //     id: response.data.id
-                        // })
-                    })
+                    .then(response => {})
                     .catch(function (error) {
                         console.log(error);
                     });

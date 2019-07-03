@@ -2,7 +2,8 @@
     <div class="container">
         <div class="container-comment">
             <div class="one-comment">
-                <button type="submit"  class="back-to-comments" @click="backToComments"><span>Back to Comments </span></button>
+                <button type="submit" class="back-to-comments" @click="backToComments"><span>Back to Comments </span>
+                </button>
                 <div class="settings">
                     <button type="submit" id="edit" @click="showModal = !showModal">Edit</button>
                     <app-edit-comment :comment="comment"
@@ -16,9 +17,10 @@
             </div>
         </div>
         <div class="back">
-        <p id = "back-text">Lorem Ipsum is text of the typesetting industry</p>
-        <button type="submit"  class="back-to-homepage" @click="backToHomepage"><span>Back to homepage </span></button>
-    </div>
+            <p id="back-text">Lorem Ipsum is text of the typesetting industry</p>
+            <button type="submit" class="back-to-homepage" @click="backToHomepage"><span>Back to homepage </span>
+            </button>
+        </div>
     </div>
 </template>
 
@@ -26,14 +28,14 @@
     import EditComment from './EditComment'
 
     export default {
-        data () {
-            return{
+        data() {
+            return {
                 showModal: false
             }
         },
         props: ['id'],
         computed: {
-            comment(){
+            comment() {
                 return this.$store.getters.myComment;
             }
         },
@@ -46,11 +48,15 @@
                 this.$router.push('/comments');
                 scroll(0, 0);
             },
-            deleteComment () {
+            deleteComment() {
                 const id = this.id;
-                this.$store.dispatch('deleteComment', id);
-                //обновление комментариев
-                this.$router.push('/comments');
+                this.$store.dispatch('deleteComment', id)
+                    .then(() => {
+                        this.$router.push('/comments')
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             }
         },
         created() {

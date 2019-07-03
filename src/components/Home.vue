@@ -88,31 +88,12 @@
 
                 this.$store.dispatch('sendComment', comment)
                     .then(() => {
-                        //this.$store.dispatch('fetchComments')
                         this.$router.push('/comments')
                     })
                     .catch((error) => {
                         console.log(error);
                     });
-            },
-            // updateListComments() {
-            //     this.$store.dispatch('fetchComments')
-            // }
-        },
-        // beforeRouteLeave (to, from, next) {
-        //     //debugger;
-        //     this.$store.dispatch('fetchComments')
-        //         .then(() => {
-        //         //this.$router.push('/comments')
-        //     })
-        //         .catch(() => {
-        //             //this.$router.push('/comments')
-        //         });
-        //     next()
-        // }
+            }
+        }
     }
 </script>
-
-<style scoped>
-
-</style>

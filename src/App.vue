@@ -42,6 +42,5 @@ export default {
 
 <style lang="scss">
   @import './css/style.css';
-  //@import './css/font-style.css';
   @import './css/normalize.css';
 </style>
